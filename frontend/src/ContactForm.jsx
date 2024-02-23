@@ -37,7 +37,7 @@ const ContactForm = ({ existingContact = {}, updateCallback}) => {
   return (
     <form onSubmit={onSubmit}>
       <div>
-        <label htmlFor="firstName">First Name:</label>
+        <label htmlFor="firstName">Website Name:</label>
         <input
           type="text"
           id="firstName"
@@ -46,7 +46,7 @@ const ContactForm = ({ existingContact = {}, updateCallback}) => {
         />
       </div>
       <div>
-        <label htmlFor="lastName">Last Name:</label>
+        <label htmlFor="lastName">User Name:</label>
         <input
           type="text"
           id="lastName"
@@ -55,7 +55,7 @@ const ContactForm = ({ existingContact = {}, updateCallback}) => {
         />
       </div>
       <div>
-        <label htmlFor="email">Email:</label>
+        <label htmlFor="email">Password:</label>
         <input
           type="text"
           id="email"

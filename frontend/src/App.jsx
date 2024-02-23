@@ -47,16 +47,18 @@ function App() {
 
   return (
     <>
-      <ContactList contacts={contacts} updateContact={openEditModal} updateCallback={onUpdate}/>
-      <button onClick={openCreateModal}>Create New Content</button>
-      { isModalOpen && <div className ="modal">
-        <div className="modal-content">
-          <span className="close" onClick={closeModal}>&times;</span>
-          <ContactForm existingContact={currentContact}/>
+      <div id="page-content">
+        <ContactList contacts={contacts} updateContact={openEditModal} updateCallback={onUpdate}/>
+        <button onClick={openCreateModal}>Create New Credential</button>
+        { isModalOpen && <div className ="modal">
+          <div className="modal-content">
+            <span className="close" onClick={closeModal}>&times;</span>
+            <ContactForm existingContact={currentContact}/>
+          </div>
         </div>
-      </div>
 
-      }
+        }
+      </div>
       
     </>
   );
