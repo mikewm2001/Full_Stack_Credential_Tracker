@@ -1,6 +1,8 @@
 import React from "react"
 
+// Component for the list of credentials
 const CredentialList = ({credentials, updateCredential, updateCallback}) => {
+    // Delete the credential
     const onDelete = async (id) => {
         try {
             const options = {
@@ -18,6 +20,7 @@ const CredentialList = ({credentials, updateCredential, updateCallback}) => {
         }
     }
 
+    // Show/Hide the passwords
     const onShow = async () => {
         try {
             var showAllButton = document.getElementById("show-button");
@@ -50,6 +53,7 @@ const CredentialList = ({credentials, updateCredential, updateCallback}) => {
         }
     };
 
+    // HTML for the list of credentials
     return <div id="page-content">
                 <div>
                 <h2>Credentials</h2>

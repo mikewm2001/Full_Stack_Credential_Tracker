@@ -1,15 +1,19 @@
 import { useState } from "react";
 
+// Component for the form to input credentials
 const CredentialForm = ({ existingCredential = {}, updateCallback}) => {
   const [webName, setWebName] = useState(existingCredential.webName || "");
   const [userName, setUserName] = useState(existingCredential.userName || "");
   const [password, setPassword] = useState(existingCredential.password || "");
 
+  // Define variable to check if user is updating a credential or not
   const updating = Object.entries(existingCredential).length !== 0
 
+  // Prevent automatic refreshing of page
   const onSubmit = async (e) => {
     e.preventDefault()
 
+    // Define the input data
     const data = {
         webName,
         userName,
@@ -24,6 +28,7 @@ const CredentialForm = ({ existingCredential = {}, updateCallback}) => {
         },
         body: JSON.stringify(data)
     }
+    // Send the request to update or create
     const response = await fetch(url, options)
     if (response.status !== 201 && response.status !== 200) {
         const data = await response.json()

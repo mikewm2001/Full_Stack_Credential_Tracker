@@ -4,6 +4,7 @@ import CredentialForm from "./CredentialForm"
 import "./App.css";
 
 function App() {
+  // Set up the state to store the credentials
   const [credentials, setCredentials] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [currentCredential, setCurrentCredential] = useState({})
@@ -12,23 +13,27 @@ function App() {
     fetchCredentials();
   }, []);
 
+  // Send a request to the backend to get credentials
   const fetchCredentials = async () => {
     const response = await fetch("http://127.0.0.1:5000/credentials");
     const data = await response.json();
     setCredentials(data.credentials);
   };
 
+  // Close the form
   const closeModal = () => {
     setIsModalOpen(false)
     setCurrentCredential({})
   }
 
+  // Open the form when we create a credential
   const openCreateModal = () => {
     if (!isModalOpen) {
       setIsModalOpen(true)
     }
   }
 
+  // Open the form when we update the credential
   const openEditModal = (credential) => {
     if (isModalOpen) {
       return
@@ -38,6 +43,7 @@ function App() {
     }
   }
 
+  // Operations performed after update
   const onUpdate = () => {
     closeModal()
     fetchCredentials()
