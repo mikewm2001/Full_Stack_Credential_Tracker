@@ -53,7 +53,7 @@ h2 {
   font-size: 32px;
 }
 
-#password {
+#list_password {
   text-align: right;
   visibility: hidden;
 }

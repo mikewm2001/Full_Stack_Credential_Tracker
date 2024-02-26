@@ -6,8 +6,8 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-# Specify location of local SQLite db on machine
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///mydatabase.db"
+# Specify location of local SQLite db to store on machine
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///mydatabase3.db"
 # Do not track all modifications to db
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 

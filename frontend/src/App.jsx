@@ -1,26 +1,26 @@
 import { useState, useEffect } from "react";
-import ContactList from "./ContactList";
-import ContactForm from "./ContactForm"
+import CredentialList from "./CredentialList";
+import CredentialForm from "./CredentialForm"
 import "./App.css";
 
 function App() {
-  const [contacts, setContacts] = useState([]);
+  const [credentials, setCredentials] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [currentContact, setCurrentContact] = useState({})
+  const [currentCredential, setCurrentCredential] = useState({})
 
   useEffect(() => {
-    fetchContacts();
+    fetchCredentials();
   }, []);
 
-  const fetchContacts = async () => {
-    const response = await fetch("http://127.0.0.1:5000/contacts");
+  const fetchCredentials = async () => {
+    const response = await fetch("http://127.0.0.1:5000/credentials");
     const data = await response.json();
-    setContacts(data.contacts);
+    setCredentials(data.credentials);
   };
 
   const closeModal = () => {
     setIsModalOpen(false)
-    setCurrentContact({})
+    setCurrentCredential({})
   }
 
   const openCreateModal = () => {
@@ -29,18 +29,18 @@ function App() {
     }
   }
 
-  const openEditModal = (contact) => {
+  const openEditModal = (credential) => {
     if (isModalOpen) {
       return
     } else {
-      setCurrentContact(contact)
+      setCurrentCredential(credential)
       setIsModalOpen(true)
     }
   }
 
   const onUpdate = () => {
     closeModal()
-    fetchContacts()
+    fetchCredentials()
 
   }
   
@@ -48,12 +48,12 @@ function App() {
   return (
     <>
       <div id="page-content">
-        <ContactList contacts={contacts} updateContact={openEditModal} updateCallback={onUpdate}/>
+        <CredentialList credentials={credentials} updateCredential={openEditModal} updateCallback={onUpdate}/>
         <button id="bottom-section" onClick={openCreateModal}>Create New Credential</button>
         { isModalOpen && <div className ="modal">
           <div className="modal-content">
             <span className="close" onClick={closeModal}>&times;</span>
-            <ContactForm existingContact={currentContact}/>
+            <CredentialForm existingCredential={currentCredential}/>
           </div>
         </div>
 
